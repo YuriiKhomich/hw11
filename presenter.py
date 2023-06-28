@@ -18,14 +18,14 @@ from view import get_user_choice, display_message
 class ArticleFactory:
     @staticmethod
     def create_article(choice):
-        if choice == "1":
-            return PapperArticle()
-        elif choice == "2":
-            return SiteArticle()
-        elif choice == "3":
-            return BlogArticle()
-        elif choice == "4":
-            return NewsArticle()
+        article_map = {
+            "1": PapperArticle,
+            "2": SiteArticle,
+            "3": BlogArticle,
+            "4": NewsArticle
+        }
+        if choice in article_map:
+            return article_map[choice]()
         else:
             return None
 
